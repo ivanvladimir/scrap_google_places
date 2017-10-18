@@ -15,7 +15,6 @@ s2t = {
 lat_lng={
     "lat":19.3794,
     "lng":99.1591
-    
 }
 
 if __name__ == '__main__':
@@ -24,9 +23,9 @@ if __name__ == '__main__':
             action="store",
             help="keywords to search")
 
-    p.add_argument("--location",default="London, England",type=str,
-            action="store", dest="location",
-            help="Location for search")
+    p.add_argument("--language",default="es",type=str,
+            action="store", dest="language",
+            help="Location language")
 
     p.add_argument("--dbname",
             default="DB.json", type=str,
@@ -50,9 +49,7 @@ if __name__ == '__main__':
 
 
     query_result = google_places.text_search(
-             query=args.KW,lat_lng=lat_lng,
-              language= 'es')
-    
+             query=args.KW, language= args.language)
     Filter = Query()
 
     for place in query_result.places:
